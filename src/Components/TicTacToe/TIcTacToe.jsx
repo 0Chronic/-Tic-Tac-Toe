@@ -78,13 +78,28 @@ const checkwin = () => {
 const won =(winner) =>{
   setLock(true)
   if(winner === "x") {
-    titleRef.current.innerHTML = `Congratulations: <img src=${cross_icon}>`
+    titleRef.current.innerHTML = `Congratulations: <img src=${cross_icon} WINS>`
   }
   else{
-         titleRef.current.innerHTML =`Congratulations: <img src=${circle_icon}>`
+         titleRef.current.innerHTML =`Congratulations: <img src=${circle_icon} WINS>`
   }
 }
 
+
+const reset = () => {
+  setLock(false);
+  setData(["","","","","","","","",""]);
+  setCount(0);
+
+  titleRef.current.innerHTML =
+    `Tic Tac Toe Game In <span>React</span>`;
+
+  let boxes = document.querySelectorAll(".boxes");
+
+  boxes.forEach((box) => {
+    box.innerHTML = "";
+  });
+}
 
 
 
@@ -112,7 +127,8 @@ const won =(winner) =>{
 
         </div>
 
-        <button className='reset'>
+        <button className='reset' onClick={()=>{reset()}}> 
+          
           Reset
         </button>
 
